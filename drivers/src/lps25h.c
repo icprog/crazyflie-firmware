@@ -194,9 +194,9 @@ bool lps25hSetEnabled(bool enable)
 
 	if (enable)
 	{
-	  enable_mask = 0b11000110; // Power on, 25Hz, BDU, reset zero
+	  enable_mask = 0xC6;	// 0b11000110; // Power on, 25Hz, BDU, reset zero
 	  status = i2cdevWrite(I2Cx, devAddr, LPS25H_CTRL_REG1, 1, &enable_mask);
-	  enable_mask = 0b00001111; // AVG-P 512, AVG-T 64
+	  enable_mask = 0x0F;	// 0b00001111; // AVG-P 512, AVG-T 64
 	  status = i2cdevWrite(I2Cx, devAddr, LPS25H_RES_CONF, 1, &enable_mask);
 // TODO: Investigate why temp values becomes wrong when FIFO averaging is enabled.
 //	  enable_mask = 0b11000011; // FIFO Mean mode, 4 moving average

@@ -72,7 +72,7 @@ void DONT_DISCARD PendSV_Handler(void)
 void DONT_DISCARD NMI_Handler(void)
 {
 }
-
+#ifndef __CC_ARM
 /**
  * @brief  This function handles Hard Fault exception.
  */
@@ -91,7 +91,7 @@ void DONT_DISCARD HardFault_Handler(void)
   "MRSNE R0, PSP \n"
   "B printHardFault");
 }
-
+#endif
 void DONT_DISCARD printHardFault(uint32_t* hardfaultArgs)
 {
   unsigned int stacked_r0;

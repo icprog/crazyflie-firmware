@@ -80,10 +80,17 @@ static bool isInit = false;
 
 static uint8_t nbrOwMems = 0;
 static OwSerialNum serialNbr;
+#ifdef __CC_ARM
+static const OwSerialNum eepromSerialNum =
+{
+	{0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, EEPROM_I2C_ADDR}
+};
+#else
 static const OwSerialNum eepromSerialNum =
 {
   .data = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, EEPROM_I2C_ADDR}
 };
+#endif
 static uint32_t memSize;
 static CRTPPacket p;
 
